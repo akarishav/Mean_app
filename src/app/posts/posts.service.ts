@@ -87,8 +87,10 @@ export class PostsService {
         title: title,
         content: content,
         imagePath: image,
-        creator: null
+        creator: null,
       };
+      console.log('ppp',postData);
+
     }
     this.http
       .put("http://localhost:3000/api/posts/" + id, postData)

@@ -89,7 +89,8 @@ export class PostCreateComponent {
         this.postId,
         this.form.value.title,
         this.form.value.content,
-        this.form.value.image
+        this.form.value.image,
+        // null
       );
     }
     this.form.reset();
