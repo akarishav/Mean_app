@@ -8,8 +8,6 @@ import { environment } from "src/environments/environment";
 
 const backendUrl = environment.apiUrl;
 
-
-const backendUrl = environment.apiUrl;
 @Injectable({ providedIn: "root" })
 export class AuthService {
   private isAuthenticated = false;
