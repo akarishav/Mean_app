@@ -8,6 +8,8 @@ import { environment } from "src/environments/environment";
 
 const backendUrl = environment.apiUrl;
 
+
+const backendUrl = environment.apiUrl;
 @Injectable({ providedIn: "root" })
 export class AuthService {
   private isAuthenticated = false;
@@ -38,6 +40,7 @@ export class AuthService {
   createUser(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
     return this.http
+
       .post(backendUrl+ "user/signup", authData)
       .subscribe(() => {
         this.router.navigate(["/"]);
@@ -50,6 +53,7 @@ export class AuthService {
     const authData: AuthData = { email: email, password: password };
     this.http
       .post<{ token: string; expiresIn: number, userId: string }>(
+
         backendUrl+ "user/login",
         authData
       )

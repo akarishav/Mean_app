@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { Post } from "./post.model";
 import { environment } from "src/environments/environment";
 
+
 const backendUrl = environment.apiUrl;
 
 @Injectable({ providedIn: "root" })
@@ -20,6 +21,7 @@ export class PostsService {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.http
       .get<{ message: string; posts: any; maxPosts: number }>(
+
         backendUrl+ "posts" + queryParams
       )
       .pipe(
@@ -58,7 +60,9 @@ export class PostsService {
       content: string;
       imagePath: string;
       creator: string;
+
     }>(backendUrl+ "posts/" + id);
+
   }
 
   addPost(title: string, content: string, image: File) {
@@ -68,7 +72,9 @@ export class PostsService {
     postData.append("image", image, title);
     this.http
       .post<{ message: string; post: Post }>(
+
         backendUrl+ "posts",
+
         postData
       )
       .subscribe(responseData => {
@@ -96,7 +102,9 @@ export class PostsService {
 
     }
     this.http
+
       .put(backendUrl+ "posts/" + id, postData)
+
       .subscribe(response => {
         this.router.navigate(["/"]);
       });
@@ -104,6 +112,8 @@ export class PostsService {
 
   deletePost(postId: string) {
     console.log(postId);
+
     return this.http.delete(backendUrl+ "posts/" + postId);
+
   }
 }
